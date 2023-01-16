@@ -1,9 +1,11 @@
+import subprocess
 import tkinter as tk
 import tkinter.ttk as ttk
 import tkinter.filedialog as filedialog
 import tkinter.messagebox as messagebox
 from start import start
 from tkinter import *
+import webbrowser
 
 
 class Gui:
@@ -65,6 +67,10 @@ class Gui:
         self.img_logo = PhotoImage(file="pic/Logo.png")
         self.bg_logo = Label(self.master, image=self.img_logo, background='#8ec9e9', anchor='se')
         self.bg_logo.place(rely=1, relx=1, anchor='se')
+
+        self.lb_Git_Hub = ttk.Label(self.master, text="Drücke hier um die das Projekt einzusehen", background="#8ec9e9", foreground="#0056a4")
+        self.lb_Git_Hub.place(relx=1, rely=0, anchor="ne")
+        self.lb_Git_Hub.bind("<Button-1>", lambda e: webbrowser.open("https://github.com/ErenAK21/Fplo"))
 
         self.Menu()
         self.buttons()

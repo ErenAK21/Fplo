@@ -75,3 +75,5 @@ def start(files: list, destination: str):
                 shutil.copyfile(file, f"{destination}/_{os.path.basename(file)}")
             except PermissionError:
                 tkinter.messagebox.showerror(title="Error", message=f"Der zugriff auf die Datei {os.path.basename(file)} wurde verweigert, dies kann daran Liegen das die Datei offen ist! \n Diese Datei wurde deswegen übersprungen!")
+
+        tkinter.messagebox.showinfo("Fertig", f"Das Programm ist durchgelaufen, die Dateien wurden in dem Verzeichnis {destination} gespeichert")
