@@ -1,4 +1,4 @@
-import subprocess
+
 import tkinter as tk
 import tkinter.ttk as ttk
 import tkinter.filedialog as filedialog
@@ -21,12 +21,15 @@ class Gui:
         self.bg_zug = None
         self.img_logo = None
         self.bg_logo = None
+        self.destination2 = ""
 
         # Hier werden die Buttons erstellt, womit man Die Dateien wählen kann einen speicherort wählen kann und das Programm starten kann
-        self.bt_dateiWaehlen = ttk.Button(self.master, text="Datei Wählen", command=self.getFiles)
-        self.bt_speicheortWaehlen = ttk.Button(self.master, text="Speicherort Wählen", command=self.getDestination)
+        self.bt_dateiWaehlen = ttk.Button(self.master, text="Datei wählen", command=self.getFiles)
+        self.bt_speicheortWaehlen = ttk.Button(self.master, text="Speicherort wählen", command=self.getDestination)
         self.bt_start = ttk.Button(self.master, text="Programm Starten",
                                    command=self.start)
+
+        self.bt_speicheortWaehlen2 = ttk.Button(self.master, text="Zweiten Speicherort wählen", command=self.getDestination2)
 
         self.GUILayout()
 
@@ -38,15 +41,16 @@ class Gui:
             return
 
         if self.destination == "":
-            messagebox.showerror(title="Error!!", message="Bitte eine Datei Auswählen")
+            messagebox.showerror(title="Error!!", message="Bitte einen Speicherort Auswählen")
             return
 
-        start(self.files, self.destination)
+        start(self.files, self.destination, self.destination2)
 
     def buttons(self):
 
         self.bt_dateiWaehlen.place(anchor=CENTER, relx=.5, rely=.2)
-        self.bt_speicheortWaehlen.place(anchor=CENTER, relx=.5, rely=.5)
+        self.bt_speicheortWaehlen.place(anchor=CENTER, relx=.5, rely=.4)
+        self.bt_speicheortWaehlen2.place(anchor=CENTER, relx=.5, rely=.6)
         self.bt_start.place(anchor=CENTER, relx=.5, rely=.8)
 
     def GUILayout(self):
@@ -82,6 +86,10 @@ class Gui:
 
     def getDestination(self):
         self.destination = filedialog.askdirectory(
+            title="Bitte wählen sie den Ordner aus in dem die PDF Dateien gespeichert werden sollen.")
+
+    def getDestination2(self):
+        self.destination2 = filedialog.askdirectory(
             title="Bitte wählen sie den Ordner aus in dem die PDF Dateien gespeichert werden sollen.")
 
     def Menu(self):
