@@ -45,7 +45,7 @@ def copyAndRename(file, destination, date):
     date = datetime.datetime.strptime(date, "%d.%m.%Y")  # Hier wird das Datum im Datetime format gespeichert
 
     srcfilename = os.path.basename(file)  # Hier wird von der Ausgewählten datei der Dateien Name rausgefiltert
-    filename = f"/{date.year}{nullstring(date.month)}{nullstring(date.day)}_{srcfilename}"
+    filename = f"/{date.year}-{nullstring(date.month)}-{nullstring(date.day)}_{srcfilename}"
 
     shutil.copyfile(file, destination + filename)  # In dieser Zeile wird die Datei kopiert und dabei umbenannt
 
@@ -76,4 +76,4 @@ def start(files: list, destination: str):
             except PermissionError:
                 tkinter.messagebox.showerror(title="Error", message=f"Der zugriff auf die Datei {os.path.basename(file)} wurde verweigert, dies kann daran Liegen das die Datei offen ist! \n Diese Datei wurde deswegen übersprungen!")
 
-        tkinter.messagebox.showinfo("Fertig", f"Das Programm ist durchgelaufen, die Dateien wurden in dem Verzeichnis {destination} gespeichert")
+    tkinter.messagebox.showinfo("Fertig", f"Das Programm ist durchgelaufen, die Dateien wurden in dem Verzeichnis \n{destination} \ngespeichert")
